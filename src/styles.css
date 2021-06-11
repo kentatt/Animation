@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes slideIn {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0%);
+    }
+    40%,100% {
+      opacity: 1;
+    }
+}
+
+@keyframes smooth {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+    100% {
+        clip-path: inset(0);
+    }
+}
+
+@keyframes scroll {
+    0% {
+      transform: translate(0, -10px);
+    }
+    80% {
+      transform: translate(0, 20px);
+    }
+    0%, 80%, 100% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+}
+
+@keyframes mask {
+    10% {
+      transform: translate(0, 101%);
+    }
+    40%, 60% {
+      transform: translate(0, 0%);
+    }
+    100% {
+      transform: translate(0, -100%);
+    }
+}
+
+@keyframes wide-scale {
+    0% {
+        width: 0px;
+    }
+    100% {
+        width: 300px;
+    }
+}
+
+@keyframes rotation {
+    0% {
+      transform: scale(.3);
+    }
+  
+    50% {
+      transform: scale(.6) rotate(-45deg);
+      background: red;
+    }
+  
+    100% {
+      transform: scale(1) rotate(180deg);
+      background: blue;
+    }
+}
+
+
+
+.after::after {
+    content: "色の違う文字が実際に追加されている文字です。";
+    color: skyblue;
+}
+
+.title::first-letter {
+    color: red;
+    font-size: 70px;
+}
+
+.first-line::first-line {
+    color: skyblue;
+}
+
+.selection::selection {
+    color: gold;
+    background-color: red;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+input, textarea:blank { 
+    border: 2px solid red;
+}
+
+.shadow {
+    box-shadow: 0 5px lightslategrey;
+}
+
+.shadow:active {
+    position: relative;
+    box-shadow: none;
+    top: 5px;
+}
+
+#nav:not(:target) {
+    right: -100%;
+    transition: right 1s;
+}
+ 
+#nav:target {
+    right: 0;
+    transition: right 1s;
+}
+
+.img:hover {
+    opacity: 1.0;
+    transform: rotate(180deg);
+}
+
+.slidein-s {
+    animation: slideIn 1s cubic-bezier(0.7, 0, 0.5, 0.7) 1.6s 1 forwards;
+}
+
+.slidein-f {
+    animation: slideIn 1s cubic-bezier(0.7, 0, 0.5, 0.7) 0.6s 1 forwards;
+}
+
+.slidein-i-f {
+    clip-path: inset(0 100% 0 0);
+    animation: smooth 1s cubic-bezier(0.7, 0, 0.5, 0.7) 0.4s 1 forwards;
+}
+
+.slidein-i-s {
+    clip-path: inset(0 100% 0 0);
+    animation: smooth 1s cubic-bezier(0.7, 0, 0.5, 0.7) 1.6s 1 forwards;
+}
+
+.smooth {
+    clip-path: inset(0 100% 0 0);
+    animation: smooth 1.4s cubic-bezier(0.35, 0, 1, 1) 2.8s 1 forwards;
+}
+
+.scroll {
+    animation: scroll 3.5s infinite ;
+}
+
+.mask-bg {
+    background-color: transparent;
+    display: inline-block;
+    font-size: 36px;
+    font-weight: bold;
+    overflow: hidden;
+    position: relative;
+    transition: color 0ms 450ms;
+}
+
+.mask-bg::after {
+    background-color: #362ae0;
+    bottom: 0;
+    content: '';
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(0, 100%);
+}
+
+.mask-bg {
+    color: #362ae0;
+}
+
+.mask-bg::after {
+    animation: mask 2s cubic-bezier(0.8, 0, 0.170, 1) infinite;
+}
+
+.wide {
+    animation: wide-scale 2s ease-out 2s infinite alternate;
+}
+
+.wide2 {
+    animation: wide-scale 1.4s ease-out 0.4s infinite alternate-reverse;
+}
+
+.wide3 {
+    animation: wide-scale 4s ease-out  infinite alternate;
+}
+
+.wide4 {
+    animation: wide-scale 1s ease-out 1s infinite alternate-reverse;
+}
+
+.box {
+    animation: rotation 2s ease 0s infinite alternate none running;
+}
+  
